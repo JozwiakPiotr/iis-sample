@@ -26,3 +26,28 @@ Dodać w libvirt maszynie wirtualnej channel z name - org.qemu.guest_agent.0
 W celu uniknięcia konfliktu SID `C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown`
 Usunąć VM i zostawić dysk .qcow2.
 
+### Wybróbować reset
+Plik `C:\Windows\System32\Sysprep\unattend.xml`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <ProtectYourPC>3</ProtectYourPC>
+            </OOBE>
+        </component>
+    </settings>
+    <settings pass="specialize">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <!-- Pusty znacznik ComputerName lub jego brak wymusi pytanie o hostname w OOBE -->
+        </component>
+    </settings>
+</unattend>
+```
+```bash
+C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
+```
