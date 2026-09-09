@@ -8,8 +8,8 @@ builder.Services.AddOcelot(builder.Configuration);
 
 var app = builder.Build();
 
+app.UseDefaultFiles();
 app.UseStaticFiles();
-app.MapGet("/", () => Results.Redirect("/index.html"));
 
 // Ocelot must be awaited
 await app.UseOcelot();

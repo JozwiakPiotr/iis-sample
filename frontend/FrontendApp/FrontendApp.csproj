@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <SpaRoot>../ClientApp/</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Ocelot" Version="19.0.0" />
@@ -12,4 +14,23 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="EnsureNodeModules" BeforeTargets="Build"
+          Condition="!Exists('$(SpaRoot)node_modules')">
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
+  </Target>
+
+  <Target Name="BuildSpa" BeforeTargets="ComputeFilesToPublish">
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)../FrontendApp/wwwroot/**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')"
+                             Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>wwwroot/%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 </Project>
