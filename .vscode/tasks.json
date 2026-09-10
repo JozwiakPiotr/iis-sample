@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "BackendService: run",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/backend/BackendService.csproj",
+                "--launch-profile",
+                "BackendService"
+            ],
+            "problemMatcher": "$msCompile",
+            "isBackground": true,
+            "group": "build"
+        },
+        {
+            "label": "FrontendApp: run",
+            "type": "process",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/frontend/FrontendApp/FrontendApp.csproj",
+                "--launch-profile",
+                "FrontendApp"
+            ],
+            "problemMatcher": "$msCompile",
+            "isBackground": true,
+            "group": "build"
+        },
+        {
+            "label": "Backend + Frontend: run without debug",
+            "dependsOn": [
+                "BackendService: run",
+                "FrontendApp: run"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        }
+    ]
+}

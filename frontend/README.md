@@ -27,9 +27,12 @@ Cel:
    - App Pool: No Managed Code, Integrated
 
 5. Ocelot routing:
-   - Plik: frontend/FrontendApp/ocelot.json
+   - Plik produkcyjny: frontend/FrontendApp/ocelot.Production.json
    - Upstream: /api/{everything}
    - Downstream host: backend.contoso.pl:443 (https)
+
+   W środowisku Development używany jest plik `ocelot.Development.json`,
+   który kieruje ruch do `http://localhost:5001`.
 
 6. Update deployment:
    - zbuduj ponownie ClientApp (npm run build)

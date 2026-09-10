@@ -5,7 +5,7 @@ Cel:
 - endpoint: /api/users (GET/POST/DELETE)
 
 1. Publish:
-   cd backend/BackendService
+   cd backend
    dotnet restore
    dotnet publish -c Release -o C:\deploy\backend
 

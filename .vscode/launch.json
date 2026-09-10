@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "C#: BackendService",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/backend/BackendService.csproj",
+            "launchConfigurationId": "TargetFramework=;BackendService"
+        },
+        {
+            "name": "C#: FrontendApp",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/frontend/FrontendApp/FrontendApp.csproj",
+            "launchConfigurationId": "TargetFramework=;FrontendApp"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "C#: Backend + Frontend",
+            "configurations": [
+                "C#: BackendService",
+                "C#: FrontendApp"
+            ],
+            "stopAll": true
+        }
+    ]
+}

@@ -3,8 +3,13 @@
     {
       "DownstreamPathTemplate": "/api/{everything}",
       "UpstreamPathTemplate": "/api/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [ { "Host": "backend.contoso.pl", "Port": 443 } ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ]
     }
   ],

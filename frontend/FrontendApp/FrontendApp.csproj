@@ -10,13 +10,16 @@
     <PackageReference Include="Ocelot" Version="19.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="ocelot.json">
+    <ProjectReference Include="../../backend/BackendService.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="ocelot.*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
-  <Target Name="EnsureNodeModules" BeforeTargets="Build"
-          Condition="!Exists('$(SpaRoot)node_modules')">
+  <Target Name="EnsureNodeModules" BeforeTargets="Build" Condition="!Exists('$(SpaRoot)node_modules')">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
   </Target>
 
@@ -25,8 +28,7 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)../FrontendApp/wwwroot/**" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')"
-                             Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>wwwroot/%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
