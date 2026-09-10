@@ -19,8 +19,30 @@ Przejść przez instalator w formie GUI. Sprawdzić czy agent działa
 Get-Service qemu-ga
 ```
 Dodać w libvirt maszynie wirtualnej channel z name - org.qemu.guest_agent.0
-## SSH
+## Zdalny dostęp
+Preferować RDP ponieważ ssh jest bezużyteczne windows
+
+### RDP
+```
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
+set-service TermService -StartupType 'Automatic'
+start-service TermService
+Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+```
+
+### SSH
 `Set-Service -Name sshd -StartupType 'Automatic'`
+Host nie będzie się mógł połączyć do windows server ponieważ zakfalifikuje go do profilu public a połączenia ssh są możliwe tylko w profilu domain i private, dlatego ustawiamy to połączenie jako private.
+```bash
+# To ustawia profil private na wszystkich interfejsach, w moim przypadku jest jeden
+Set-NetConnectionProfile -NetworkCategory Private
+# albo
+Set-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -Profile Any
+```
+ssh będzie próbowało się logować każdym certem z maszyny jaki znajdzie, co spowoduje `Too many authentication failures` dlatego:
+```
+ssh -o PubkeyAuthentication=no Administrator@192.168.101.222
+```
 
 ## Reset
 W celu uniknięcia konfliktu SID `C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown`
@@ -51,3 +73,54 @@ Plik `C:\Windows\System32\Sysprep\unattend.xml`
 ```bash
 C:\Windows\System32\Sysprep\sysprep.exe /generalize /oobe /shutdown /unattend:C:\Windows\System32\Sysprep\unattend.xml
 ```
+
+# Windows 11
+## Bypass
+```
+Shift + f10
+start ms-cxh:localonly
+```
+## Zainstalować
+- virtio-win z ISO
+- dodać channel name - org.qemu.guest_agent.0
+
+## sysprep
+
+### Wyłączyć BitLocker
+`Disable-BitLocker -MountPoint "C:"`
+
+### Uruchomić sysprep
+
+`C:\Windows\System32\Sysprep\unattend.xml`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OOBE>
+                <HideEULAPage>true</HideEULAPage>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <ProtectYourPC>1</ProtectYourPC>
+            </OOBE>
+        </component>
+    </settings>
+</unattend>
+```
+```bash
+cd C:\Windows\System32\Sysprep
+sysprep.exe /generalize /oobe /shutdown /unattend:unattend.xml
+```
+Następnie usunąć maszynę i zostawić dysk qcow2
+
+## Ponowne uruchomienie 
+- `Rename-Computer {twoja nazwa}`
+
+## Rezultat
+Słabo. Cały proces po ponownym uruchomieniu jest dość długi i czasochłonny. A i tak nie można ustawić nazwy hosta.
+
+Podsumowanie:
+- ponowna konfiguracja języka systemu, klawiatury itp
+- system nie próbuje zalogować mnie do konta microsoft
+- hasło + 3 pytania pomocniczne
+- nie trzeba akceptować EULA, metryk itp
+- nie można ustawić nazwy komputera
