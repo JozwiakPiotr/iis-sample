@@ -1,7 +1,19 @@
 using System.Collections.Concurrent;
+using Microsoft.AspNetCore.Server.HttpSys;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseWindowsService();
+if (OperatingSystem.IsWindows())
+{
+    builder.WebHost.UseHttpSys(options =>
+    {
+        options.Authentication.Schemes =
+            AuthenticationSchemes.Negotiate |
+            AuthenticationSchemes.NTLM;
+
+        options.Authentication.AllowAnonymous = false;
+    });
+}
 
 var app = builder.Build();
 var users = new ConcurrentDictionary<Guid, User>();

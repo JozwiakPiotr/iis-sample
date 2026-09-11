@@ -5,12 +5,10 @@
     <Nullable>enable</Nullable>
     <SpaRoot>../ClientApp/</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <PublishDir>../../publish/frontend</PublishDir>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Ocelot" Version="19.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="../../backend/BackendService.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="ocelot.*.json">
@@ -19,7 +17,8 @@
     </None>
   </ItemGroup>
 
-  <Target Name="EnsureNodeModules" BeforeTargets="Build" Condition="!Exists('$(SpaRoot)node_modules')">
+  <Target Name="EnsureNodeModules" BeforeTargets="Build"
+          Condition="!Exists('$(SpaRoot)node_modules')">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm ci" />
   </Target>
 
@@ -28,7 +27,8 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)../FrontendApp/wwwroot/**" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')"
+                             Exclude="@(ResolvedFileToPublish)">
         <RelativePath>wwwroot/%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>

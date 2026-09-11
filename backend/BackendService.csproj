@@ -3,6 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PublishDir>../publish/backend</PublishDir>
   </PropertyGroup>
 
   <ItemGroup>

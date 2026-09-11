@@ -8,6 +8,24 @@
 - RAM: 4 GB
 - HDD: 40 GB
 
+## Sieć
+warto pomyśleć nad jawnym ustawianiem MAC i przypisania do niego IP w DHCP
+
+adresy MAC w qemu mają format `52:54:00:xx:xx:xx`
+`definicja sieci, sekcja DHCP'
+```xml
+  <dhcp>
+    <range start="xxx.xxx.xxx.xxx" end="xxx.xxx.xxx.xxx" />
+    <host mac="52:54:00:xx:xx:xx" name="hostname" ip="xxx.xxx.xxx.xxx" />
+  </dhcp>
+```
+```bash
+virt-install \
+# ...
+--network network=default,model=virtio,mac=52:54:00:12:34:56
+```
+
+
 ## Instalacja agenta qemu i sterowników VirtIO
 Zamntować obraz ISO virtio-win, a następnie
 ```
@@ -124,3 +142,12 @@ Podsumowanie:
 - hasło + 3 pytania pomocniczne
 - nie trzeba akceptować EULA, metryk itp
 - nie można ustawić nazwy komputera
+
+# Środowisko
+
+| host | IP
+| - | - |
+| DC01 | 192.168.101.2
+| API01 | 192.168.101.3
+| WEB01 | 192.168.101.4
+| PC01 | 192.168.101.5
