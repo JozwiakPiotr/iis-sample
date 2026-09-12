@@ -52,9 +52,9 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 `Set-Service -Name sshd -StartupType 'Automatic'`
 Host nie będzie się mógł połączyć do windows server ponieważ zakfalifikuje go do profilu public a połączenia ssh są możliwe tylko w profilu domain i private, dlatego ustawiamy to połączenie jako private.
 ```bash
-# To ustawia profil private na wszystkich interfejsach, w moim przypadku jest jeden
+# To ustawia profil private na wszystkich interfejsach, w moim przypadku jest jeden, chociaż to nie zadziała gdy podłączym się do domeny
 Set-NetConnectionProfile -NetworkCategory Private
-# albo
+# drugi sposób działa zawsze
 Set-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -Profile Any
 ```
 ssh będzie próbowało się logować każdym certem z maszyny jaki znajdzie, co spowoduje `Too many authentication failures` dlatego:

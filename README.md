@@ -1,25 +1,15 @@
-Projekt "frontend" i "backend".
+# Spis treści
 
-Struktura:
-- backend/BackendService - ASP.NET Core WebAPI hostowany na HttpSys jako Windows Service
-- frontend/FrontendApp - ASP.NET Core hostujący statyczne pliki React w wwwroot i Ocelot jako reverse proxy
-- frontend/ClientApp - źródła React + vite
+- [vm.md](doc/vm.md)
+- [ad.md](doc/ad.md)
+- [cicd.md](doc/cicd.md)
 
-Szybkie uruchomienie deweloperskie (Windows):
-1) Backend:
-   cd backend
-   dotnet new sln -n backend
-   dotnet sln add BackendService/BackendService.csproj
-   dotnet restore BackendService/BackendService.csproj
-   dotnet run --project BackendService/BackendService.csproj
-
-2) Frontend:
-   cd frontend/ClientApp
-   npm install
-   npm run build
-   cd ..
-   dotnet new sln -n frontend
-   dotnet sln add FrontendApp/FrontendApp.csproj
-   dotnet run --project FrontendApp/FrontendApp.csproj
-
-IIS: utworzyć site frontend.contoso.pl wskazujący do opublikowanego FrontendApp (wwwroot). Backend publikować i hostować jako Windows Service. Ocelot w FrontendApp przekierowuje /api/* do backend.contoso.pl.
+# TODO
+## backend
+- [ ] zainstalować runtime asp.net
+- [ ] zmienić w frontend żeby uderzało na backend.contoso.lab i co ważne na port 5001 zamiast 443
+- [ ] na razie zrobić self signed cert i dodać go na wszystkie komputery przez GPO
+- [ ] zwykle konto domenowe
+- [ ] utworzyć usługę
+- [ ] skonfigurować httpsys przez netsh
+- [ ] skonfigurować firewall
