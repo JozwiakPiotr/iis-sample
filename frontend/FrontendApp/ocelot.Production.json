@@ -6,8 +6,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "backend.contoso.pl",
-          "Port": 443
+          "Host": "backend.contoso.lab",
+          "Port": 5001
         }
       ],
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ]
