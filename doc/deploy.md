@@ -10,7 +10,7 @@ Host 192.168.101.*
 W menadżerze plików wejśc na `sftp://Administrator@192.168.101.3/C:/` i skopiować
 
 ## instalacja runtime
-pobrać dla WEB01 i API01 odpowiednio HostBundle i asp.net runtime i uruchomić instalator
+pobrać dla WEB01 i API01 odpowiednio HostBundle (uwaga, dla WEB01 najpierw zainstalować IIS, potem HostBundle, na koniec zrestartować IIS)
 
 ## backend API - windows service
 ### certyfikat
@@ -95,7 +95,7 @@ następnie linkujemy GPO do OU (constoso.lab)
 
 `contoso.lab > prawy klik > Link an existing GPO > Service Logon Rights > OK`
 
-na koniec `gpupdate /force`
+na koniec `gpupdate /force` i możemy uruchomić usługę
 
 ## frontend
 ### certyfikat
@@ -112,7 +112,7 @@ $cert = New-SelfSignedCertificate `
 
 Export-Certificate `
   -Cert $cert `
-  -FilePath "\\contoso.lab\NETLOGON\frontend.contoso.lab.cer" `
+  -FilePath "C:\Download\frontend.contoso.lab.cer" `
   -Force
 ```
 
@@ -124,7 +124,7 @@ Export-Certificate `
 import-module servermanager
 add-windowsfeature web-server -includeallsubfeature
 ```
-chuj wie które poprawne
+chuj wie które poprawne, nie pamiętam które działało
 
 następnie zaisntalować Hosting Bundle, potem zrestartować IIS 
 ```bash
@@ -143,9 +143,10 @@ $bindingInformation = "*:443:"
 
 Import-Module WebAdministration
 
-# chyba znowu jakaś stara werjsa chuj wie
+# tutaj jakaś stary sposób:
 # New-WebAppPool -Name $siteName
 # New-Website -Name $SiteName -Port 80 -PhysicalPath $Path -ApplicationPool $SiteName
+# poniżej jest chyba nowszy, nie wymaga osobnego robienie WebAppPool
 
 New-IISSite -Name $siteName -PhysicalPath $sitePath -BindingInformation $bindingInformation -CertificateThumbPrint $thumbprint -CertStoreLocation $certStoreLocation -Protocol https
 ```

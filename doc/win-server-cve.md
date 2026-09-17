@@ -1,4 +1,0 @@
-## CVE-2026-69597 
-(Windows HTTP.sys Elevation of Privilege Vulnerability):Załatanie błędu w sterowniku HTTP.sys zaostrzyło zarządzanie stanem sesji i powiązaniami gniazd TCP przy wieloetapowej autoryzacji. W efekcie bezstanowe proxy (Ocelot) przesyłające etapy handshake'u NTLM (Type 1 $\to$ 2 $\to$ 3) gubi kontekst połączenia w zaktualizowanym sterowniku, co skutkuje natychmiastowym odrzuceniem sesji i zwróceniem kodu 401.  
-## CVE-2026-69594 
-(Microsoft Local Security Authority / LSA Server Elevation of Privilege):Modyfikacja podsystemu LSA wymusiła rygorystyczną walidację kontekstów bezpieczeństwa i powiązań kanału (Extended Protection for Authentication / Channel Binding Tokens). Gdy Ocelot pośredniczy w ruchu HTTPS, skróty certyfikatów TLS przestają się zgadzać; załatany moduł LSA interpretuje to jako atak NTLM Relay i blokuje przekazanie poświadczeń, nawet jeśli login i hasło są prawidłowe.  
