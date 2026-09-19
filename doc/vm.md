@@ -9,6 +9,7 @@
 - HDD: 40 GB
 
 ## Sieć
+### DHCP
 warto pomyśleć nad jawnym ustawianiem MAC i przypisania do niego IP w DHCP
 
 adresy MAC w qemu mają format `52:54:00:xx:xx:xx`
@@ -24,7 +25,18 @@ virt-install \
 # ...
 --network network=default,model=virtio,mac=52:54:00:12:34:56
 ```
-
+### DNS
+fajne rozwiązanie split dns
+```bash
+sudo mkdir -p /etc/systemd/resolved.conf.d/
+sudo tee /etc/systemd/resolved.conf.d/network-split.conf << 'EOF'
+[Resolve]
+DNS=192.168.101.1
+Domains=~network
+EOF
+sudo systemctl restart systemd-resolved
+resolvectl status
+```
 
 ## Instalacja agenta qemu i sterowników VirtIO
 Zamntować obraz ISO virtio-win, a następnie

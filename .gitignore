@@ -484,3 +484,4 @@ $RECYCLE.BIN/
 *.swp
 frontend/FrontendApp/wwwroot/
 publish/
+*.key

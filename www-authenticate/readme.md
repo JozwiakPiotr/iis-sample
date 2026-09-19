@@ -6,38 +6,46 @@ tak działa dla każdego schematu uwierzytelniania
 
 ## Apache
 
-Uruchom poniższe polecenia z katalogu `www-authenticate/httpd`:
-
 ```bash
-mkdir -p private
+dnf install -y httpd mod_ssl
 
-cat << EOF > private/index.html
-<!DOCTYPE html>
-<html>
-    <meta charset="utf-8">
-</html>
-<body>
-    To jest chroniony zasób Apache.
-</body>
+openssl req -x509 -newkey rsa:2048 -nodes -days 365 \
+  -keyout /etc/pki/tls/private/vm1.network.key \
+  -out /etc/pki/tls/certs/vm1.network.crt \
+  -subj "/CN=vm1.network" \
+  -addext "subjectAltName=DNS:vm1.network"
+
+cat << EOF > /etc/httpd/conf/httpd.conf
+<Location "/">
+	AuthType basic
+	AuthName "private"
+	AuthUserFile .htaccess
+	Require valid-user
+</Location>
 EOF
 
-podman run --rm httpd htpasswd -nb admin tajne123 > .htpasswd
-
-podman rm -f apache 2>/dev/null || true
-podman run -d \
-  --name apache \
-  -p 8080:80 \
-  -v "$PWD/private":/usr/local/apache2/htdocs/private:ro,Z \
-  -v "$PWD/.htpasswd":/usr/local/apache2/conf/.htpasswd:ro,Z \
-  -v "$PWD/httpd.conf":/usr/local/apache2/conf/httpd.conf:ro,Z \
-  httpd
-
-curl -i http://localhost:8080/private/
-curl -i -u admin:tajne123 http://localhost:8080/private/
+htpasswd -cb /etc/httpd/.htaccess admin admin
 ```
 
-Pierwsze żądanie powinno zwrócić `401 Unauthorized` i nagłówek `WWW-Authenticate`,
-a drugie `200 OK`. Hasło `tajne123` jest przykładowe; zmień je przed użyciem poza lokalnym testem.
+```bash
+curl --cacert vm1.network.crt -u admin:admin https://vm1.network
+```
+## Analiza
+
+```bash
+touch sslkeylogfile.txt
+chmod 777 sslkeylogfile.txt
+podman run --rm -it \
+  -p 8080:8080 \
+  -p 8081:8081 \
+  -e SSLKEYLOGFILE="/home/mitmproxy/sslkeylogfile.txt" \
+  -v mitm-data:/home/mitmproxy/.mitmproxy:Z \
+  -v ./sslkeylogfile.txt:/home/mitmproxy/sslkeylogfile.txt:Z \
+  mitmproxy/mitmproxy mitmweb \
+    --web-host 0.0.0.0 \
+    --ssl-insecure \
+    --set web_password=admin
+```
 
 ## Słownik
 - resource authentication
