@@ -1,0 +1,484 @@
+Keywords,Date and Time,Event ID,Task Category,Level,User,Operational Code,Computer
+Audit Success,21/09/2026 00:26:44,4672,Special Logon,Information,,Info,API01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		SYSTEM
+	Account Name:		SYSTEM
+	Account Domain:		NT AUTHORITY
+	Logon ID:		0x3E7
+
+Privileges:		SeAssignPrimaryTokenPrivilege
+			SeTcbPrivilege
+			SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeAuditPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege"
+Audit Success,21/09/2026 00:26:44,4624,Logon,Information,,Info,API01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		SYSTEM
+	Account Name:		API01$
+	Account Domain:		CONTOSO
+	Logon ID:		0x3E7
+
+Logon Information:
+	Logon Type:		5
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		SYSTEM
+	Account Name:		SYSTEM
+	Account Domain:		NT AUTHORITY
+	Logon ID:		0x3E7
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{00000000-0000-0000-0000-000000000000}
+
+Process Information:
+	Process ID:		0x2ec
+	Process Name:		C:\Windows\System32\services.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:26:42,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8EC054
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,21/09/2026 00:26:07,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F130E
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,21/09/2026 00:26:07,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8EBF59
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,21/09/2026 00:25:53,4624,Logon,Information,,Info,API01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x8F14EF
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{3f0782a2-2a6a-949d-c28c-e63a1c0fd121}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		56982
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:25:53,4672,Special Logon,Information,,Info,API01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F14EF
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege"
+Audit Success,21/09/2026 00:25:52,4624,Logon,Information,,Info,API01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x8F14AF
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{3f0782a2-2a6a-949d-c28c-e63a1c0fd121}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		56982
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:25:52,4672,Special Logon,Information,,Info,API01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F14AF
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege"
+Audit Failure,21/09/2026 00:25:47,4625,Logon,Information,,Info,API01.contoso.lab,"An account failed to log on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Security ID:		NULL SID
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC000035B
+	Sub Status:		0x0
+
+Process Information:
+	Caller Process ID:	0x0
+	Caller Process Name:	-
+
+Network Information:
+	Workstation Name:	PC01
+	Source Network Address:	192.168.101.4
+	Source Port:		49876
+
+Detailed Authentication Information:
+	Logon Process:		
+	Authentication Package:	NTLM
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:25:47,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F13CD
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,21/09/2026 00:25:47,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F12F2
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Failure,21/09/2026 00:25:40,4625,Logon,Information,,Info,API01.contoso.lab,"An account failed to log on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Security ID:		NULL SID
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC000035B
+	Sub Status:		0x0
+
+Process Information:
+	Caller Process ID:	0x0
+	Caller Process Name:	-
+
+Network Information:
+	Workstation Name:	PC01
+	Source Network Address:	192.168.101.4
+	Source Port:		49876
+
+Detailed Authentication Information:
+	Logon Process:		
+	Authentication Package:	NTLM
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:25:37,4634,Logoff,Information,,Info,API01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F136D
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,21/09/2026 00:25:33,4624,Logon,Information,,Info,API01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x8F13CD
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{3f0782a2-2a6a-949d-c28c-e63a1c0fd121}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		61633
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,21/09/2026 00:25:33,4672,Special Logon,Information,,Info,API01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8F13CD
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege"
+Audit Success,21/09/2026 00:25:33,1102,Log clear,Information,,Info,API01.contoso.lab,"The audit log was cleared.
+Subject:
+	Security ID:	CONTOSO\Administrator
+	Account Name:	Administrator
+	Domain Name:	CONTOSO
+	Logon ID:	0x8F13CD"

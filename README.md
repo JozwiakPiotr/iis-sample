@@ -23,7 +23,7 @@ copilot pisze > NTLM w HTTP jest stanowy i powiązany z fizycznym połączeniem 
 
 
 ## Cele
-- [ ] zapoznać się z aktualizacjami CVE
+~~- [ ] zapoznać się z aktualizacjami CVE~~
 - [ ] narysować sytuacje w diagramie (NTLM, Kerberos, LDAP w kontekście mojego scenariusza)
 - [ ] spróbować postawić windows server sprzed aktualizacji
 - [ ] przetestować jeszcze uwierzytelnianie po stronie IIS
@@ -54,3 +54,9 @@ copilot pisze > NTLM w HTTP jest stanowy i powiązany z fizycznym połączeniem 
 - [x] skonfigurować firewall
 ### frontend
 - [x] skonfigurować IIS
+
+
+# Słownik
+- Extended Protection for Authentication (EPA)
+- Channel Binding Tokens (CBT)
+- Integrated Windows Authentication (IWA)

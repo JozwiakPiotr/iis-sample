@@ -1,0 +1,321 @@
+Keywords,Date and Time,Event ID,Task Category,Level,User,Operational Code,Computer
+Audit Success,20/09/2026 22:37:36,4624,Logon,Information,,Info,DC01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x8646C4
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{d5f3daeb-035d-d419-2d2b-6e453c2c1597}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		64853
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,20/09/2026 22:37:36,4672,Special Logon,Information,,Info,DC01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8646C4
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege
+			SeEnableDelegationPrivilege"
+Audit Success,20/09/2026 22:37:32,4768,Kerberos Authentication Service,Information,,Info,DC01.contoso.lab,"A Kerberos authentication ticket (TGT) was requested.
+
+Account Information:
+	Account Name:		Administrator
+	Supplied Realm Name:	CONTOSO
+	User ID:			CONTOSO\Administrator
+	MSDS-SupportedEncryptionTypes:	0x0 (N/A)
+	Available Keys:	RC4, AES128-SHA96, AES256-SHA96, AES128-SHA256, AES256-SHA384
+
+Service Information:
+	Service Name:		krbtgt
+	Service ID:		CONTOSO\krbtgt
+	MSDS-SupportedEncryptionTypes:	0x0 (N/A)
+	Available Keys:	RC4, AES128-SHA96, AES256-SHA96
+
+Domain Controller Information:
+	MSDS-SupportedEncryptionTypes:	0x0 (N/A)
+	Available Keys:	RC4, AES128-SHA96, AES256-SHA96
+
+Network Information:
+	Client Address:		::ffff:192.168.101.5
+	Client Port:		64851
+	Advertized Etypes:	
+		AES256-CTS-HMAC-SHA1-96
+		AES128-CTS-HMAC-SHA1-96
+		RC4-HMAC-NT
+		DES-CBC-MD5
+
+Additional Information:
+	Ticket Options:		0x40810010
+	Result Code:		0x0
+	Ticket Encryption Type:	0x12
+	Session Encryption Type:	0x12
+	Pre-Authentication Type:	2
+	Pre-Authentication EncryptionType:	0x12
+
+Certificate Information:
+	Certificate Issuer Name:		
+	Certificate Serial Number:	
+	Certificate Thumbprint:		
+
+Ticket information
+	Response ticket hash:		ngIj8O+gE33YOs6YvWKKp8lN0E8FxpX0EdgAoSO9LRI=
+
+Certificate information is only provided if a certificate was used for pre-authentication.
+
+Pre-authentication types, ticket options, encryption types and result codes are defined in RFC 4120."
+Audit Success,20/09/2026 22:37:32,4634,Logoff,Information,,Info,DC01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8645C9
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,20/09/2026 22:37:32,4634,Logoff,Information,,Info,DC01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x864517
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,20/09/2026 22:37:27,4624,Logon,Information,,Info,DC01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x86465F
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{4c8ece78-450c-aa03-fb70-35ab0d991fad}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		64848
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,20/09/2026 22:37:27,4672,Special Logon,Information,,Info,DC01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x86465F
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege
+			SeEnableDelegationPrivilege"
+Audit Success,20/09/2026 22:37:20,4634,Logoff,Information,,Info,DC01.contoso.lab,"An account was logged off.
+
+Subject:
+	Security ID:		CONTOSO\PC01$
+	Account Name:		PC01$
+	Account Domain:		CONTOSO
+	Logon ID:		0x864572
+
+Logon Type:			3
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer."
+Audit Success,20/09/2026 22:37:20,4624,Logon,Information,,Info,DC01.contoso.lab,"An account was successfully logged on.
+
+Subject:
+	Security ID:		NULL SID
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Information:
+	Logon Type:		3
+	Restricted Admin Mode:	-
+	Remote Credential Guard:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO.LAB
+	Logon ID:		0x8645C9
+	Linked Logon ID:		0x0
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{d5f3daeb-035d-d419-2d2b-6e453c2c1597}
+
+Process Information:
+	Process ID:		0x0
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	192.168.101.5
+	Source Port:		54987
+
+Detailed Authentication Information:
+	Logon Process:		Kerberos
+	Authentication Package:	Kerberos
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested."
+Audit Success,20/09/2026 22:37:20,4672,Special Logon,Information,,Info,DC01.contoso.lab,"Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		CONTOSO\Administrator
+	Account Name:		Administrator
+	Account Domain:		CONTOSO
+	Logon ID:		0x8645C9
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege
+			SeEnableDelegationPrivilege"
+Audit Success,20/09/2026 22:37:20,1102,Log clear,Information,,Info,DC01.contoso.lab,"The audit log was cleared.
+Subject:
+	Security ID:	CONTOSO\Administrator
+	Account Name:	Administrator
+	Domain Name:	CONTOSO
+	Logon ID:	0x85A4F5"

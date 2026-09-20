@@ -141,6 +141,7 @@ $siteName = "frontend"
 $sitePath = "C:\frontend"
 $bindingInformation = "*:443:"
 
+# albo tak... Import-Module IISAdministration
 Import-Module WebAdministration
 
 # tutaj jakaś stary sposób:

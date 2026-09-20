@@ -32,15 +32,20 @@ curl --cacert vm1.network.crt -u admin:admin https://vm1.network
 ```
 ## Analiza
 
+Uwaga mitmproxy do wyjebania
+- wymagane męczące ręczne uwierzytelnianie gdy nasłuchuje na adresie innym niż localhost
+- trzeba dużo montować (bez montowania certy się zmieniają)
+- trzeba uruchomić w trybie internatykwnym
+
 ```bash
 touch sslkeylogfile.txt
-chmod 777 sslkeylogfile.txt
-podman run --rm -it \
+chmod 646 sslkeylogfile.txt
+podman run -it --name mitmproxy \
   -p 8080:8080 \
   -p 8081:8081 \
-  -e SSLKEYLOGFILE="/home/mitmproxy/sslkeylogfile.txt" \
+  -e SSLKEYLOGFILE="/home/mitmproxy/.sslkeylog/sslkeylogfile.txt" \
   -v mitm-data:/home/mitmproxy/.mitmproxy:Z \
-  -v ./sslkeylogfile.txt:/home/mitmproxy/sslkeylogfile.txt:Z \
+  -v ~/.sslkeylog:/home/mitmproxy/.sslkeylog:Z \
   mitmproxy/mitmproxy mitmweb \
     --web-host 0.0.0.0 \
     --ssl-insecure \

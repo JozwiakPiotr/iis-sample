@@ -37,8 +37,8 @@ EOF
 sudo systemctl restart systemd-resolved
 resolvectl status
 ```
-
-## Instalacja agenta qemu i sterowników VirtIO
+## Inicjalizacja 
+### Instalacja agenta qemu i sterowników VirtIO
 Zamntować obraz ISO virtio-win, a następnie
 ```
 D:
@@ -49,18 +49,23 @@ Przejść przez instalator w formie GUI. Sprawdzić czy agent działa
 Get-Service qemu-ga
 ```
 Dodać w libvirt maszynie wirtualnej channel z name - org.qemu.guest_agent.0
-## Zdalny dostęp
+### Zdalny dostęp
 Preferować RDP ponieważ ssh jest bezużyteczne windows
 
-### RDP
-```
+#### RDP
+ustawienie
+```bash
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
 set-service TermService -StartupType 'Automatic'
 start-service TermService
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 ```
+troubleshooting
+```
+gci "HKLM:\System\CurrentControlSet\Control\Terminal Server"
+gp 'HKLM:\System\CurrentControlSet\Control\Terminal Server' "fDenyTSConnections"
 
-### SSH
+#### SSH
 `Set-Service -Name sshd -StartupType 'Automatic'`
 Host nie będzie się mógł połączyć do windows server ponieważ zakfalifikuje go do profilu public a połączenia ssh są możliwe tylko w profilu domain i private, dlatego ustawiamy to połączenie jako private.
 ```bash
@@ -157,9 +162,9 @@ Podsumowanie:
 
 # Środowisko
 
-| host | IP
-| - | - |
-| DC01 | 192.168.101.2
-| API01 | 192.168.101.3
-| WEB01 | 192.168.101.4
-| PC01 | 192.168.101.5
+| host | IP | opis
+| - | - | - |
+| DC01 | 192.168.101.2 | kontroler domeny
+| API01 | 192.168.101.3 | windows server 
+| WEB01 | 192.168.101.4 | windows server z IIS
+| PC01 | 192.168.101.5 | windows 11
